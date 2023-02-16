@@ -1,0 +1,53 @@
+# Ignore these dirs.
+private/
+docs/
+
+# Useless directories
+venv/
+__pycache__/
+*egg-info/
+
+# Huge directories.
+node_modules/
+traces/
+prepared_submissions/
+
+# Huge files
+traces.tgz
+
+# Private dirs
+instance/
+exports/
+util/
+servercfg/
+
+# Private files
+.env
+
+# Database.
+*.db
+
+# Compiled python files
+*.pyc
+
+# Batch & script files.
+*.bat
+
+# APK files.
+*.apk
+
+# Log files
+*.log
+
+# Pipfile.
+Pipfile.lock
+
+# Package lock.
+package-lock.json
+
+# Instance level files.
+maketestdata.js
+maketestdata2.js
+maketestdata3.js
+maketraces.js
+makesuburbs.js

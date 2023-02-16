@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <title>
+            {% block title_block %}
+                {{ app_config.PROJECT_NAME }}
+            {% endblock title_block %}
+        </title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{ url_for('static', filename = 'fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ url_for('static', filename = 'bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename = 'aireyes.css') }}" rel="stylesheet">
+        {% block extra_styles %}
+        {% endblock extra_styles %}
+
+        <script src="{{ url_for('static', filename = 'bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        {% block extra_scripts %}
+        {% endblock extra_scripts %}
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap');
+
+          .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+          }
+
+          @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+              font-size: 3.5rem;
+            }
+          }
+        </style>
+    </head>
+
+    <body>
+        <header class="p-3 bg-dark text-white">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+                    </a>
+
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="{{ url_for('frontend.index') }}" class="nav-link px-2 {% if request.url_rule.endpoint == 'frontend.index' %}{{ 'selected' }}{% endif %}">Home</a></li>
+                        <li><a href="{{ url_for('frontend.flights_overview') }}" class="nav-link px-2 {% if request.url_rule.endpoint == 'frontend.flights_overview' %}{{ 'selected' }}{% endif %}">Flights</a></li>
+                        <li><a href="{{ url_for('frontend.heatmap') }}" class="nav-link px-2 {% if request.url_rule.endpoint == 'frontend.heatmap' %}{{ 'selected' }}{% endif %}">Heatmap</a></li>
+                        <li><a href="{{ url_for('frontend.statistics') }}" class="nav-link px-2 {% if request.url_rule.endpoint == 'frontend.analysis' %}{{ 'selected' }}{% endif %}">Statistics & Analysis</a></li>
+                        <li><a href="{{ url_for('frontend.about') }}" class="nav-link px-2 {% if request.url_rule.endpoint == 'frontend.about' %}{{ 'selected' }}{% endif %}">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            {% block main_block %}
+
+            {% endblock main_block %}
+        </main>
+
+        <footer class="text-muted">
+            {% block footer_block %}
+                <div class="container">
+                    <p>VLJX LABS // EXPERIMENTAL Ⓒ 2022</p>
+                </div>
+            {% endblock footer_block %}
+        </footer>
+    </body>
+</html>

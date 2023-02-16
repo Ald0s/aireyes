@@ -1,0 +1,24 @@
+[
+    {
+        "icao": "7c5b4c",
+        "flightName": "QLK58",
+        "registration": "VH-SBI",
+        "type": "DH8C",
+        "description": "2004 DE HAVILLAND DHC-8-300 Dash 8",
+        "ownerOperator": "EASTERN AUSTRALIA AIRLINES PTY. LIMITED",
+        "year": "2004",
+        "image": "dash8.jpg",
+        "FlightPoints": []
+    },
+    {
+        "icao": "7c81d2",
+        "flightName": "RXA3531",
+        "registration": "VH-ZXG",
+        "type": "SF34",
+        "description": "1996 SAAB 340",
+        "ownerOperator": "REGIONAL EXPRESS PTY LTD",
+        "year": "1996",
+        "image": "saab.jpg",
+        "FlightPoints": []
+    }
+]

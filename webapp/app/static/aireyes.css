@@ -1,0 +1,190 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+small {
+}
+
+header {
+    height: 72px;
+}
+
+header .nav-link.selected {
+    color: #6c757d !important;
+}
+
+header .nav-link:hover {
+    color: #6c757d !important;
+}
+
+header .nav-link {
+    color: #fff !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.heatmap-grid {
+    padding: 0;
+    height: calc(100vh - 72px);
+}
+
+.heatmap-grid .row {
+    padding: 0;
+    height: calc(100vh - 72px);
+}
+
+.heatmap-grid .map-container {
+    padding: 0;
+    height: calc(100vh - 72px);
+}
+
+.heatmap-grid .controls-container {
+    padding: 0;
+    height: calc(100vh - 72px);
+    height: 100%;
+    padding: 1.5rem;
+}
+
+.ordered-list {
+
+}
+
+.ordered-list li {
+    line-height: 1.8;
+}
+
+.qanda {
+    padding-left: 0;
+    margin-bottom: 1.6rem;
+}
+
+.qanda p {
+    margin-bottom: 0rem;
+}
+
+.qanda li {
+    line-height: 1.8;
+}
+
+.qanda .question {
+    margin-bottom: 0.6rem;
+    list-style: none;
+    font-weight: 600;
+}
+
+.qanda .answer {
+    list-style: none;
+}
+
+.units-font {
+    font-size: 0.85rem;
+    font-weight: 200;
+    color: #4a4851;
+    margin-left: 0.12rem;
+}
+
+.ampm-font {
+    font-size: 0.85rem;
+    margin-left: 0.12rem;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.flight-name {
+    letter-spacing: 0.06rem;
+}
+
+.aircraft-item {
+
+}
+
+.aircraft-item .aircraft-img {
+    object-fit:cover;
+}
+
+.aircraft-item.active .aircraft-img {
+    opacity: 1;
+    background-color: #FFFFFF;
+}
+
+.aircraft-item.active .is-active-badge .badge {
+    vertical-align: text-bottom;
+    display: inline-block;
+}
+
+.aircraft-item.active .last-seen-badge .badge {
+    vertical-align: text-bottom;
+    display: none;
+}
+
+.aircraft-item .aircraft-img {
+    opacity: 0.3;
+    background-color: #FFFFFF;
+}
+
+.aircraft-item .is-active-badge .badge {
+    vertical-align: text-bottom;
+    display: none;
+}
+
+.aircraft-item .last-seen-badge .badge {
+    vertical-align: text-bottom;
+    display: inline-block;
+}
+
+.aircraft-img-container {
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+.aircraft-img-container .last-seen-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.aircraft-item a {
+    text-decoration: none;
+}
+
+.aircraft-flight-summary {
+
+}
+
+.aircraft-flight-summary a {
+    text-decoration: none;
+}
+
+.aircraft-flight-summary .badge {
+    vertical-align: text-bottom;
+}
+
+.card.aircraft-flight-summary {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.card.aircraft-flight-summary:first-child {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.card.aircraft-flight-summary:last-child {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.pagination-container {
+    margin-top: 1.5rem;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,15 @@
+{
+  "name": "ol-webpack",
+  "version": "1.0.0",
+  "description": "Webpack for heatmap",
+  "scripts": {
+    "build": "wp --config webpack.config.js"
+  },
+  "devDependencies": {
+    "webpack": "^5.58.1",
+    "webpack-nano": "^1.1.1"
+  },
+  "dependencies": {
+    "ol": "latest"
+  }
+}

@@ -1,0 +1,187 @@
+{# A summary tab for a given flight. This tab will stretch the width of its container and provide some summary information such as; the aircraft performing the flight, when did it start, is it still ongoing,
+otherwise when did it end, takeoff & landing airports if applicable. Also, some surface level statistics such as the amount of time so far in the flight, estimated amount of fuel used etc.
+
+Arguments
+---------
+:flight: An instance of Flight to display. #}
+
+{# Get the aircraft from the flight.. #}
+{% set aircraft = flight.aircraft %}
+{# Get the number of seconds ago the aircraft was last seen. #}
+{% set seconds_since_last_seen = aircraft.seconds_since_last_seen %}
+{# Get the flight name. #}
+{% set flight_name = flight.flight_name %}
+{# Determine if the flight is currently ongoing. #}
+{% set is_ongoing = flight.is_ongoing %}
+{# If ongoing, we'll insert a class into the card. #}
+{% if is_ongoing %}
+    {% set ongoing_class = " ongoing" %}
+{% else %}
+    {% set ongoing_class = "" %}
+{% endif %}
+{# Determine if the flight contains only taxiing data. #}
+{% set taxi_only = flight.taxi_only %}
+
+{# Does the Flight have departure details? This can be false if we're missing previous day information. #}
+{% set has_departure_details = flight.has_departure_details %}
+{# Now, get all departure details. These can be indiscriminately None, has_departure_details simply lets us know that the flight HAS a departure at all. #}
+{% set takeoff_airport = flight.takeoff_airport %}
+{% set datetime_started = flight.starts_at_friendly_datetime %}
+
+{# Does the Flight have arrival details? This can be false if we're missing next day information, or, if is_ongoing is True, the aircraft simply has not landed yet. #}
+{% set has_arrival_details = flight.has_arrival_details %}
+{# Now, get all arrival details. These can be indiscriminately None, has_arrival_details simply lets us know that the flight HAS an arrival at all. The latest ending datetime doesn't necessarily mean the very last point. This could mean
+the most recent point at which the aircraft was landed during this flight. #}
+{% set landing_airport = flight.landing_airport %}
+{% set datetime_latest_ending = flight.ends_at_friendly_datetime %}
+
+{# Get some summary statistics; for now, just the amount of time travelled, as well as the distance travelled. #}
+{% set formatted_flight_time = flight.formatted_flight_time %}
+{% set distance_travelled = flight.distance_travelled_kilometers %}
+
+<div class="card aircraft-flight-summary{{ ongoing_class }} p-3">
+    <div class="card-body">
+        <div class ="row">
+
+            <div class="col-3 d-flex justify-content-start">
+                <div class="row">
+                    <div class="d-inline-block align-self-center">
+                        {% if is_ongoing %}
+                            <span> <span class="badge bg-success">Ongoing</span></span>
+                        {% endif %}
+                        {# If flight is ongoing, place an Ongoing badge in the flight title. #}
+                        <h5 class="card-title">
+                            <a href="{{ url_for('frontend.aircraft_overview', aircraft_icao = aircraft.icao) }}">{{ aircraft.flight_name }}</a> Flight #{{ flight.flight_number }}
+                        </h5>
+                        <span class="d-block text-center">
+                            <small>
+                                <i class="fas fa-stopwatch"></i> {{ formatted_flight_time|safe }} &#183; <i class="fas fa-ruler-horizontal"></i> {{ distance_travelled }}<span class="units-font">km</span>
+                            </small>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-9">
+                <div class="row">
+                    {% if taxi_only and not is_ongoing %}
+                        {% set col_type = "-auto" %}
+                    {% else %}
+                        {% set col_type = "-4" %}
+                    {% endif %}
+                    <div class="col{{ col_type }} d-flex justify-content-start">
+                        {% if taxi_only and not is_ongoing %}
+                            {# This flight is taxi only, or the aircraft started up but never left the ground. #}
+                            <div class="d-inline-block">
+                                <h5><i class="fas fa-plane"></i> Taxi Only</h5>
+                                <div class="d-grid">
+                                    <span><small>This aircraft did not leave the ground at all.</small></span>
+                                    <span><small>Log begins at {{ datetime_started|safe }} and ends at {{ datetime_latest_ending|safe }}.</small></span>
+                                </div>
+                            </div>
+                        {% else %}
+                            {# Handle departure details display. Departure details will only be unavailable if we have not yet acquired previous day history. #}
+                            {% if not has_departure_details %}
+                                {# We're missing departure details because the previous day's flight data has not yet been processed. This should be a general not available block. #}
+                                <div class="d-inline-block">
+                                    <h5><i class="fas fa-plane-slash"></i> Not Available</h5>
+                                    <div class="d-grid">
+                                        <span>
+                                            <small>Departure details are currently not available</small>
+                                        </span>
+                                    </div>
+                                </div>
+                            {% else %}
+                                {# We're not missing any departure details. Display them. #}
+                                <div class="d-inline-block">
+                                    <h5><i class="fas fa-plane-departure"></i> Departure</h5>
+                                    <div class="d-grid">
+                                        <span><small>{{ datetime_started }}</small></span>
+                                        {# Airports can be None. Only display if they are not. #}
+                                        {% if takeoff_airport is not none %}
+                                            <small><a href="{{ url_for('frontend.airport_overview', airport_hash = takeoff_airport.airport_hash) }}">{{ takeoff_airport.name }}</a></small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    {% if taxi_only and not is_ongoing %}
+                        <div class="col d-flex justify-content-center">
+
+                        </div>
+                    {% else %}
+                        <div class="col-2 d-flex justify-content-center">
+                            <h2 class="d-inline-block align-self-center"><i class="fas fa-long-arrow-alt-right"></i></h2>
+                        </div>
+
+                        <div class="col-5 d-flex justify-content-start">
+                            <div class="d-inline-block">
+                                {# Handle arrival details display. Remember, arrival details won't be available if we're missing future information OR the flight has not landed. But, display different information for each case. #}
+                                {% if not is_ongoing and not has_arrival_details %}
+                                    {# We're missing arrival details because the next day's flight data has not yet been processed. This should be a general not available block. #}
+                                    <h5><i class="fas fa-plane"></i> Not Available</h5>
+                                    <div class="d-grid">
+                                        <span>
+                                            <small>Arrival details are currently not available</small>
+                                        </span>
+                                    </div>
+                                {% elif not has_arrival_details %}
+                                    {# The flight is ongoing, but simply has not landed just yet so we can't determine arrival details. #}
+                                    <h5><i class="fas fa-plane"></i> In-flight</h5>
+                                    <div class="d-grid">
+                                        <span>
+                                            <small>
+                                                {% if seconds_since_last_seen is not none %}
+                                                    Last seen <b>{{ seconds_since_last_seen }}s</b> ago
+                                                {% else %}
+                                                    Last seen not available
+                                                {% endif %}
+                                            </small>
+                                        </span>
+                                    </div>
+                                {% elif taxi_only %}
+                                    {# The aircraft is ongoing, but has not yet even taken off. Display this properly. #}
+                                    <h5><i class="fas fa-plane"></i> Not Available</h5>
+                                    <div class="d-grid">
+                                        <span>
+                                            <small>Arrival details are currently not available, this aircraft has not yet taken off.</small>
+                                        </span>
+                                    </div>
+                                {% else %}
+                                    {# We're not missing any arrival details; even if we're ongoing. It doesn't matter. Simply display those arrival details. #}
+                                    <h5><i class="fas fa-plane-arrival"></i> Arrival</h5>
+                                    <div class="d-grid">
+                                        <span><small>{{ datetime_latest_ending }}</small></span>
+                                        {# Airports can be None. Only display if they are not. #}
+                                        {% if landing_airport is not none %}
+                                            <small><a href="{{ url_for('frontend.airport_overview', airport_hash = landing_airport.airport_hash) }}">{{ landing_airport.name }}</a></small>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {#{% if not taxi_only %}
+                <div class="col-2 d-flex justify-content-end">
+                    <div class="row">
+                        <span class="align-self-center">
+                            <strong>
+                                <a href="{{ url_for('frontend.flight_overview', flight_hash = flight.flight_hash) }}">View Route</a>
+                            </strong>
+                        </span>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-2 d-flex justify-content-center">
+                    <div class="row">
+
+                    </div>
+                </div>
+            {% endif %}#}
+        </div>
+    </div>
+</div>

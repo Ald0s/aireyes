@@ -1,0 +1,13 @@
+This document describes a reference for understanding what each ZSTD file in this directory contains, and for what purpose it was saved.
+
+Filename: pol35-01.zstd
+Purpose: Figuring out the multi-select technique for aircraft/
+Summary:
+- The aircraft known as POL35 has flown far out of range of most receivers
+- The data source is 'Mode S'
+- Position updates have LONG timed out, in this update seen_pos is undefined
+- General updates are ongoing. Last seen is 3.2 seconds ago.
+- RSSI is updating.
+- Altitude is undefined.
+- Position is undefined.
+- Rotation is undefined.

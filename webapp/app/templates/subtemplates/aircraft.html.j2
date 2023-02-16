@@ -1,0 +1,57 @@
+{# A single aircraft card. This by default only displays the aircraft's name, image and link to viewing all flights associated with this aircraft. The center of the card is a loading element, which will be replaced when the socket
+IO underlying the page takes over control and manages to connect.
+
+Arguments
+---------
+:aircraft: An instance of Aircraft to display. #}
+
+{% set is_active = aircraft.is_active_now %}
+{# Based on whether the aircraft is active, set a display class for the active badge, and an inactive class for the image. #}
+{% if is_active %}
+     {% set aircraft_item_active_class = " active" %}
+{% else %}
+    {% set aircraft_item_active_class = "" %}
+{% endif %}
+
+{# Determine whether the aircraft has a valid image set. If not, construct a default image source. #}
+{% if aircraft.image != None %}
+    {% set image_source = url_for('static', filename = 'images/' + aircraft.image) %}
+{% else %}
+    {% set image_source = url_for('static', filename = 'images/toorak') %}
+{% endif %}
+
+<div class="col">
+    <div class="aircraft-item{{ aircraft_item_active_class }} card shadow-sm">
+        <div class="aircraft-img-container">
+            <img class="aircraft-img bd-placeholder-img card-img-top" width="100%" height="225" role="img" preserveAspectRatio="xMidYMid slice" focusable="false" src="{{ image_source }}">
+            <div class="last-seen-badge"><h4><span class="badge bg-secondary">{{ aircraft.last_seen_str }}</span></h4></div>
+        </div>
+        <div class="card-body">
+            <input type="hidden" class="aircraft-icao" value="{{ aircraft.icao }}">
+            <h4 class="name card-text text-center">
+                <b>
+                    <span class="flight-name"><a href="{{ url_for('frontend.aircraft_overview', aircraft_icao = aircraft.icao) }}">{{ aircraft.flight_name }}</a></span>
+                    <span class="is-active-badge"> <span class="badge rounded-pill bg-success">Active</span></span>
+                </b>
+            </h4>
+
+            <div class="aircraft-statistics text-center">
+                <div class="loading spinner-grow spinner-grow-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+
+                <div class="statistics d-none">
+                    <div class="d-inline-block">
+                        <span class="card-text d-block"><i class="fas fa-gas-pump"></i> <span class="fuel-used">0</span><span class="units-font">gal</span></span>
+                        <span class="card-text d-block"><i class="fas fa-ruler-horizontal"></i> <span class="distance-travelled">0</span><span class="units-font">km</span></span>
+                        <span class="card-text d-block"><i class="fas fa-stopwatch"></i> <span class="flight-time-total-hours-all"><span class="flight-time-total-hours">0</span><span class="units-font">h</span> </span><span class="flight-time-total-minutes">0</span><span class="units-font">m</span></span>
+                    </div>
+                </div>
+
+                <div class="pt-3">
+                    <strong><a href="{{ url_for('frontend.aircraft_flights', aircraft_icao = aircraft.icao) }}">View Flights</a></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

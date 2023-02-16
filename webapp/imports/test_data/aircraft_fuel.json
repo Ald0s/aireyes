@@ -1,0 +1,17 @@
+[
+    {
+        "aircraftType": "DH8C",
+        "aircraftYear": 2004,
+
+        "fuelType": "JP-5",
+        "fuelCost": 2.85,
+        "fuelCapacity": 5678,
+        "fuelConsumption": 118,
+        "fuelRange": 1106,
+        "fuelEndurance": 356,
+        "fuelPassengerCount": 53,
+        "fuelEmissions": 3.15,
+
+        "topSpeed": 295
+    }
+]

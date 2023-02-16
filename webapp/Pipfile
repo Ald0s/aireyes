@@ -1,0 +1,42 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+marshmallow = "*"
+flask-testing = "*"
+python-dotenv = "*"
+sqlalchemy-utils = "*"
+gunicorn = "==20.1.0"
+eventlet = "==0.30.2"
+flask-socketio = "*"
+pandas = "*"
+requests = "*"
+aiosqlite = "*"
+aiofiles = "*"
+simplejson = "*"
+geopy = "*"
+shapely = "==1.8.5.post1"
+flask-caching = "*"
+fastkml = "*"
+geojson = "*"
+pyproj = "*"
+geopandas = "*"
+fiona = "*"
+psutil = "*"
+psycopg2 = "*"
+asyncpg = "*"
+geoalchemy2 = "*"
+spatialite = "*"
+pysqlite3-binary = "*"
+pytz = "*"
+flask-login = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

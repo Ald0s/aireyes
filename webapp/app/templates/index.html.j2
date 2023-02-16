@@ -1,0 +1,18 @@
+{# The index for the tracker app. This page will list an overview of each aircraft involved in the tracking operations. No real detail is discussed on this page, however. #}
+{% extends "core-layout.html.j2" %}
+
+{% block extra_scripts %}
+    <script type="module" src="{{ url_for('static', filename = 'aircraft.js') }}"></script>
+{% endblock extra_scripts %}
+
+{% block main_block %}
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-5">
+                {% for aircraft in monitored_aircraft %}
+                    {% include "subtemplates/aircraft.html.j2" %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock main_block %}

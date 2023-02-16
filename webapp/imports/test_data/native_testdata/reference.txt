@@ -1,0 +1,416 @@
+aircraft_7c4ee8_t1
+Printing flight data information
+--------------------------------
+From:		testdata/native_testdata/aircraft_7c4ee8_t1.json
+Flight Name:	POL35
+Aircraft ICAO	7c4ee8
+
+Data start:	2021-07-19 00:00:17 Z
+Data end:	2021-07-19 23:15:56 Z
+
+Flight point breakdown
+----------------------
+Number of flight points: 1299
+Number of flight points per day
+	On 2021-07-19:	1299 recorded.
+
+Partial flight breakdown
+------------------------
+Total partials: 2
+
+Partial #1
+    - started with takeoff: false
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: true
+    - is complete flight: false
+
+Partial #2
+    - started with takeoff: true
+    - ended with landing: false
+    - incomplete future: true
+    - incomplete past: false
+    - is complete flight: false
+
+Tests written
+-------------
+Partial flights
+Comprehensive flights
+
+Comments
+--------
+N/A
+
+
+aircraft_7c4ee8_t2
+Printing flight data information
+--------------------------------
+From:		testdata/native_testdata/aircraft_7c4ee8_t2.json
+Flight Name:	POL35
+Aircraft ICAO	7c4ee8
+
+Data start:	2022-07-30 08:10:21 Z
+Data end:	2022-07-30 15:55:29 Z
+
+Flight point breakdown
+----------------------
+Number of flight points: 3974
+Number of flight points per day
+	On 2022-07-30:	3974 recorded.
+
+Partial flight breakdown
+------------------------
+Total partials: 2
+
+Partial #1
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #2
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Tests written
+-------------
+Partial flights
+Comprehensive flights
+
+Comments
+--------
+N/A
+
+
+aircraft_7c4ee8_t3
+Printing flight data information
+--------------------------------
+From:		testdata/native_testdata/aircraft_7c4ee8_t3.json
+Flight Name:	POL35
+Aircraft ICAO	7c4ee8
+
+Data start:	2022-01-13 00:00:01 Z
+Data end:	2022-01-14 13:09:43 Z
+
+Flight point breakdown
+----------------------
+Number of flight points: 10167
+Number of flight points per day
+	On 2022-01-13:	6729 recorded.
+	On 2022-01-14:	3438 recorded.
+
+Partial flight breakdown
+------------------------
+Total partials: 5
+
+Partial #1
+    - started with takeoff: false
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: true
+    - is complete flight: false
+
+Partial #2
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #3
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #4
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #5
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Tests written
+-------------
+Partial flights
+Comprehensive flights
+
+Comments
+--------
+This is a flight POL35 took to Tasmania, for whatever reason.
+
+
+aircraft_7c4ef2_t1
+Printing flight data information
+--------------------------------
+From:		testdata/native_testdata/aircraft_7c4ef2_t1.json
+Flight Name:	POL30
+Aircraft ICAO	7c4ef2
+
+Data start:	2022-08-18 00:33:43 Z
+Data end:	2022-08-18 23:32:52 Z
+
+Flight point breakdown
+----------------------
+Number of flight points: 5590
+Number of flight points per day
+    On 2022-08-18:	5590 recorded.
+
+Partial flight breakdown
+------------------------
+Total partials: 7
+
+Partial #1
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #2
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #3
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #4
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #5
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #6
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #7
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Tests written
+-------------
+
+Comments
+--------
+POL30 interesting case on legs 3 & 4. Aircraft takes off at Essendon, flies toward Ballarat, then disappears for two hours. Reappears suddenly near Mitchell Park airport.
+Altitude change is negligible, there is a positive change between last point before landing, and next point after takeoff.
+
+
+aircraft_7c4ef4_t1
+Printing flight data information
+--------------------------------
+From:		testdata/native_testdata/aircraft_7c4ef4_t1.json
+Flight Name:	POL31
+Aircraft ICAO	7c4ef4
+
+Data start:	2022-08-18 00:33:43 Z
+Data end:	2022-08-18 23:32:52 Z
+
+Flight point breakdown
+----------------------
+
+
+Partial flight breakdown
+------------------------
+
+Tests written
+-------------
+
+Comments
+--------
+TODO
+
+
+aircraft_7c4ef4_t2
+Printing flight data information
+--------------------------------
+From:		testdata/native_testdata/aircraft_7c4ef4_t2.json
+Flight Name:	POL31
+Aircraft ICAO	7c4ef4
+
+Data start:	2022-08-18 00:33:43 Z
+Data end:	2022-08-18 23:32:52 Z
+
+Flight point breakdown
+----------------------
+
+
+Partial flight breakdown
+------------------------
+
+Tests written
+-------------
+
+Comments
+--------
+This trace contains a combination of NULL positions and other null data points. Essentially, this is to test & create a system that is able to support partially corrupt flight point data.
+
+
+aircraft_7c4ef5_t2
+Printing flight data information
+--------------------------------
+From:		testdata/native_testdata/aircraft_7c4ef5_t2.json
+Flight Name:	POL31
+Aircraft ICAO	7c4ef4
+
+Data start:	2022-08-18 00:33:43 Z
+Data end:	2022-08-18 23:32:52 Z
+
+Flight point breakdown
+----------------------
+
+
+Partial flight breakdown
+------------------------
+
+Tests written
+-------------
+
+Comments
+--------
+Partial flight #3 does not have a valid takeoff airport because the very very first point does not have a position.
+This log should be used to devise a technique to counter-act this.
+
+
+aircraft_7c6bcf_t1
+Printing flight data information
+--------------------------------
+From:		testdata/native_testdata/aircraft_7c6bcf_t1.json
+Flight Name:	VKX
+Aircraft ICAO	7c6bcf
+
+Data start:	2022-06-25 14:27:27 Z
+Data end:	2022-06-26 00:51:07 Z
+
+Flight point breakdown
+----------------------
+Number of flight points: 2100
+Number of flight points per day
+	On 2022-06-25:	1783 recorded.
+	On 2022-06-26:	317 recorded.
+
+Partial flight breakdown
+------------------------
+Total partials: 3
+
+Partial #1
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #2
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #3
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #4
+    - started with takeoff: true
+    - ended with landing: false
+    - incomplete future: true
+    - incomplete past: false
+    - is complete flight: false
+
+Tests written
+-------------
+Partial flights
+Comprehensive flights
+
+Comments
+--------
+N/A
+
+
+aircraft_7c68b7_t1
+Printing flight data information
+--------------------------------
+From:		testdata/native_testdata/aircraft_7c68b7_t1.json
+Flight Name:	UYX
+Aircraft ICAO	7c68b7
+
+Data start:	2022-07-29 00:03:30 Z
+Data end:	2022-07-29 07:05:14 Z
+
+Flight point breakdown
+----------------------
+Number of flight points: 1708
+Number of flight points per day
+	On 2022-07-29:	1708 recorded.
+
+Partial flight breakdown
+------------------------
+Total partials: 3
+
+Partial #1
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #2
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Partial #3
+    - started with takeoff: true
+    - ended with landing: true
+    - incomplete future: false
+    - incomplete past: false
+    - is complete flight: true
+
+Tests written
+-------------
+Partial flights
+Comprehensive flights
+
+Comments
+--------
+N/A

@@ -1,0 +1,1 @@
+{"icao":"7c4ef2","timestamp":1594597849.215,"trace":[[0,-37.725632,144.903298,"ground",0,174.4,0,null,{"type":"adsb_icao","flight":"0030    ","true_heading":174.38,"squawk":"0030","emergency":"none","category":"A7","nic":8,"rc":186,"version":2,"nac_p":9,"nac_v":2,"sil":3,"sil_type":"perhour","sda":2}],[225.1,-37.725643,144.902831,"ground",3.2,278.4,0,null,null]]}

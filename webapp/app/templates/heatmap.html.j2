@@ -1,0 +1,33 @@
+{#
+
+Arguments
+---------
+:monitored_aircraft: A list of AircraftSummary #}
+{% extends "core-layout.html.j2" %}
+
+{% block extra_scripts %}
+    <script type="module" src="{{ url_for('static', filename = 'heatmap.js') }}"></script>
+{% endblock extra_scripts %}
+
+{% block main_block %}
+    <div class="container-fluid heatmap-grid">
+        <div class="row g-0">
+            <div class="col-9 map-container">
+                <div id="map"></div>
+            </div>
+
+            <div class="col-3 controls-container">
+                <div>
+                    <p>Heatmap Controls</p>
+
+                    <div id="showAircraft">
+                        {% for aircraft in monitored_aircraft %}
+                            <input type="checkbox" id="{{ aircraft.flight_name }}" name="checkShouldShow" value="{{ aircraft.flight_name }}" checked>
+                            <label for="{{ aircraft.flight_name }}"> {{ aircraft.flight_name }}</label><br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main_block %}

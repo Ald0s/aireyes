@@ -1,0 +1,100 @@
+{#
+
+Arguments
+---------
+:num_flights:
+:flights:
+:pagination: #}
+{% extends "core-layout.html.j2" %}
+
+{% block title_block %}Flights{% endblock title_block %}
+
+{% block extra_scripts %}
+    {#<script type="module" src="{{ url_for('static', filename = 'aircraft-flights.js') }}"></script>#}
+{% endblock extra_scripts %}
+
+{% block main_block %}
+    <div class="container py-4">
+        <div class="p-5 mb-3 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">All Flights</h1>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="container">
+            <div class="row row-cols-1">
+                <div class="col">
+                    {% for flight in flights %}
+                        {# For each flight in this aircraft's flights, print a summary. #}
+                        {% include "subtemplates/flight-summary.html.j2" %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% if pagination and pagination.pages > 0 %}
+                <div class="row pagination-container">
+                    <div class="col">
+                        <nav aria-label="...">
+                            <ul class="pagination">
+                                {# If does not have previous, disable the previous page button. And set the previous button's URL to nothing. Otherwise, set the URL to the the previous page number,
+                                including all other filtration criteria. #}
+                                {% if pagination.has_prev %}
+                                    {% set previous_button_disabled_class = "" %}
+                                    {# TODO: get current filtration criteria such as date range etc and pass to url_for as well. #}
+                                {% else %}
+                                    {% set previous_button_disabled_class = " disabled" %}
+                                    {% set previous_url_href = "" %}
+                                {% endif %}
+                                <li class="page-item{{ previous_button_disabled_class }}">
+                                    {% if not pagination.has_prev %}
+                                        <span class="page-link">Previous</span>
+                                    {% else %}
+                                        <a class="page-link" href="{{ url_for(request.endpoint, p = pagination.prev_num) }}">Previous</a>
+                                    {% endif %}
+                                </li>
+
+                                {% for page in pagination.iter_pages() %}
+                                    {% if page %}
+                                        {% if page != pagination.page %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="{{ url_for(request.endpoint, p = page) }}">{{ page }}</a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item disabled">
+                                                <span class="page-link">{{ page }}</span>
+                                            </li>
+                                        {% endif %}
+                                    {% else %}
+                                        <li class="page-item">
+                                            <span class=ellipsis>...</span>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {# If does not have next, disable the next page button. And set the next button's URL to nothing. Otherwise, set the URL to the the next page number,
+                                including all other filtration criteria. #}
+                                {% if pagination.has_next %}
+                                    {% set next_button_disabled_class = "" %}
+                                    {# TODO: get current filtration criteria such as date range etc and pass to url_for as well. #}
+                                {% else %}
+                                    {% set next_button_disabled_class = " disabled" %}
+                                    {% set next_url_href = "" %}
+                                {% endif %}
+                                <li class="page-item{{ next_button_disabled_class }}">
+                                    {% if not pagination.has_next %}
+                                        <span class="page-link">Next</span>
+                                    {% else %}
+                                        <a class="page-link" href="{{ url_for(request.endpoint, p = pagination.next_num) }}">Next</a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock main_block %}
